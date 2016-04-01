@@ -10,15 +10,15 @@ RUN apt-get update -y && \
         build-essential \
         ccache \
         ssh-client \
-	locales \
+        locales \
         gettext \
-	binutils-dev \
-	libboost-all-dev \
+        binutils-dev \
+        libboost-all-dev \
         libcurl4-openssl-dev \
         libexpat1-dev \
-	libiberty-dev \
-	libicu-dev \
-	libncurses5-dev \
+        libiberty-dev \
+        libicu-dev \
+        libncurses5-dev \
         libreadline-dev \
         zlib1g-dev \
         tcl-dev \
@@ -37,8 +37,8 @@ RUN apt-get update -y && \
 COPY startup.sh /usr/bin/startup.sh
 ENTRYPOINT ["/usr/bin/startup.sh"]
 COPY setup-slave.sh /tmp/setup-slave.sh
-ADD http://maven.jenkins-ci.org/content/repositories/releases/org/jenkins-ci/plugins/swarm-client/$SWARM_CLIENT_VERSION/$SWARM_CLIENT $JENKINS_HOME/$SWARM_CLIENT
 # now that all dependencies are complete setup the slave
 RUN /bin/sh /tmp/setup-slave.sh && rm -f /tmp/setup-slave.sh
+ADD http://maven.jenkins-ci.org/content/repositories/releases/org/jenkins-ci/plugins/swarm-client/$SWARM_CLIENT_VERSION/$SWARM_CLIENT $JENKINS_HOME/
 USER jenkins_slave
 CMD []
