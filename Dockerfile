@@ -27,7 +27,6 @@ RUN apt-get update -y && \
         openjdk-8-jre \
         wget \
         fakeroot \
-        python-virtualenv \
         xsltproc \
         docbook \
         docbook-xml \
